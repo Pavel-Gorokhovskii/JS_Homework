@@ -1,13 +1,14 @@
 function Animal(name){
     this.name = name;
     var foodAmount = 50;
+    var self = this;
 
     function formatFoodAmount(){
         return foodAmount + 'гр.';
     }
 
-    this.animalFeed = function() {
-        console.log('Насыпаем в миску ' + this.dailyNorm() + ' корма.');
+    this.feed = function() {
+        console.log('Насыпаем в миску ' + self.dailyNorm() + ' корма.');
     };
 
     this.dailyNorm = function(amount) {
@@ -28,10 +29,10 @@ function Animal(name){
 function Cat(name) {
     Animal.apply(this, arguments);
 
-    var parentFeed = this.animalFeed;
+    var animalFeed = this.feed;
 
     this.feed = function(){
-        parentFeed.call(this);
+        animalFeed();
         console.log('Кот доволен ^_^');
     }
 }

@@ -30,17 +30,15 @@ function Cat(name) {
 
     var parentFeed = this.animalFeed;
 
-    var self = this;
-
-    this.stroke = function(){
+       this.stroke = function(){
         console.log('Гладим кота.');
-        return self;
+        return this;
     }
 
     this.feed = function(){
         parentFeed.call(this);
         console.log('Кот доволен ^_^');
-        return self;
+        return this;
     }
 }
 
