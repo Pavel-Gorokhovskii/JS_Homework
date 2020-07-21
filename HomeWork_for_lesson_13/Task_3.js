@@ -8,13 +8,20 @@ var textLoremLatin = 'Temporibus autem quibusdam et aut officiis debitis aut rer
     'libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, quae ' +
     'ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo?'
 
-function getVowels( text ) {
-    var vowelsSearch = /[аоиеёэыуюяАОИЕЁЭЫУЮЯeyuioaEYUIOA]/g;
+var vowels = ['e', 'y', 'u', 'i', 'o', 'a', 'у', 'е', 'ы', 'а', 'о', 'э', 'я', 'и', 'ю', 'ё']
 
-    var Vowels = text.match(vowelsSearch).length;
-
-    return Vowels ? Vowels + ' vowel letters in this text' : 'No matches';
+function getVowels( str ) {
+    return arr = str.split('')
+        .filter(function( item ) {
+            return isVowel( item ).length > 0;
+        }).length;
 }
 
-console.log(getVowels(textLoremRus));
-console.log(getVowels(textLoremLatin));
+function isVowel( letter ) {
+    return vowels.filter(function( item) {
+        return letter.toLowerCase() === item.toLowerCase();
+    })
+}
+
+console.log( getVowels( textLoremRus ) );
+console.log( getVowels( textLoremLatin ) );
